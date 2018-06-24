@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CharCard from "./components/CharCard";
-import logo from './logo.svg';
 import './App.css';
 import friends from './friends.json';
 import Header from "./components/Header";
@@ -61,27 +60,24 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">      
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro"/>      
+      <div className="App">    
         <Header
         score={this.state.score}
         highScore={this.state.highScore}
           />
-          {this.state.friends.map(friend => (
-            <CharCard
-            clickedFriend={this.clickedFriend}
-              id={friend.id}
-              key={friend.id}
-              name={friend.name}
-              image={friend.image}
-              occupation={friend.occupation}
-              location={friend.location}
-            />
-          ))}
+          <div className="container">
+            {this.state.friends.map(friend => (
+              <CharCard
+                clickedFriend={this.clickedFriend}
+                id={friend.id}
+                key={friend.id}
+                name={friend.name}
+                image={friend.image}
+                occupation={friend.occupation}
+                location={friend.location}
+              />
+            ))}
+          </div>
       </div>
 
     );
