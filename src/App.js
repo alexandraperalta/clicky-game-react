@@ -35,22 +35,25 @@ class App extends Component {
   }
 
   clickedFriend = id => {
-    let checkHighScore = 0;
+    let checkHighScore = this.state.highScore;
+    let newScore = this.state.scorel
     if(clickedFriends.indexOf(id) === -1){
       clickedFriends.push(id);
       this.shuffle(friends);
-      checkHighScore = (this.state.score + 1  > this.state.highScore) ? this.state.score + 1 : this.state.highScore;
+      newScore = this.state.score + 1;
+      checkHighScore = (newScore  > checkHighScore) ? newScore : checkHighScore;
     }
     else{
       alert("you already clicked this");
       clickedFriends = [];
+      newScore = 0
     }
     console.log(clickedFriends.toString());
    
     
     this.setState({ clickedFriends,
        friends,
-       score: this.state.score + 1,
+       score: newScore,
        highScore: checkHighScore
     });
   };
